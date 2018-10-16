@@ -35,8 +35,8 @@ function imprimirArray()
   var cities = ["Washington", "Cupertino", "Los Gatos", "Menlo Park", "Mountain View"]
   var nuevaArray = companies.concat(cities);
 
-  console.log(nuevaArray);
-  // console.log([...companies, ...cities]); ES6
+ // console.log(nuevaArray);
+   console.log([...companies, ...cities]); ES6
 }
 
 // imprimirArray2();
@@ -271,13 +271,13 @@ function isInArray(cadena, valor){
 }
 // console.log(isInArray([1, 2, 3], 2));
 
-proyectos()
+//proyectos()
 
 function proyectos(){
 
   let projects = [
   {
-      project: 'project 1',
+      project: 'project1',
       groups: [
           {
               name: 'group1',
@@ -291,7 +291,12 @@ function proyectos(){
                       groups: [
                           {
                               name: 'group1.2.1',
-                              groups: []
+                              groups: [
+                                {
+                                  name: 'group1.2.2',
+                                  groups: []
+                                }
+                              ]
                           }
                       ]
                   }
@@ -301,38 +306,124 @@ function proyectos(){
   },
   {
       project: 'project2',
-      groups: []
+      groups: [
+        {
+          name: 'grupo2',
+          groups: [{
+            name: 'gupo2.1',
+            groups: []
+          }]
+        }
+      ]
   }
 ]
 
 
-    var nombreProyectos = [];
+// var nombreProyectos = [];
+// var nombreGrupo2 = [];
 
-    for (let i = 0; i < projects.length; i++) {
-      nombreProyectos.push({
-        project: projects[i].project,
-        groups: nombreGrupo(projects[i].groups),
-      })
-    }
+// for (let i = 0; i < projects.length; i++) {
+//   // if(projects[i].groups)
+//   nombreGrupo2 = [];
 
+//   nombreProyectos.push({
+//     project: projects[i].project,
+//     groups: nombreGrupo(projects[i].groups),
+//   })
+// }
 
-    function nombreGrupo(grupos){
-      var nombreGrupo2 = [];
+// function nombreGrupo(grupos){
+//   for (let i = 0; i < grupos.length; i++) {
+//     nombreGrupo2.push(grupos[i].name)
+//     nombreGrupo(grupos[i].groups)     
+//     }
+//   return nombreGrupo2;
+// }
 
-      for (let i = 0; i <  grupos.length; i++) {
-         nombreGrupo2.push(grupos[i].name)
-         if(grupos[i].groups.length)
+//  console.log(nombreProyectos)
+// }
 
-          //guardarlo en una variable y juntarlo en un arrya
-
-          nombreGrupo2.push(nombreGrupo(grupos[i].groups))
-
-      }
-      return nombreGrupo2;
-    }
-
-     console.log(nombreProyectos)
+var nombreProyectos = [];
+for (let i = 0; i < projects.length; i++) {
+  nombreProyectos.push({
+    project: projects[i].project,
+    groups: nombreGrupo(projects[i].groups),
+  })
 }
+function nombreGrupo(grupos){
+  var nombreGrupo2 = [];
+  for (let i = 0; i < grupos.length; i++) {
+    nombreGrupo2.push(grupos[i].name)  
+    if (grupos[i].groups.length) nombreGrupo2 = [...nombreGrupo2, ...nombreGrupo(grupos[i].groups)]    
+    }
+  return nombreGrupo2;
+}
+ console.log(nombreProyectos)
+}
+
+
+// sumarValores();
+
+
+// function sumarValores(){
+
+
+// const inventory = [
+//   {type:   "machine", value: 5000},
+//   {type:   "machine", value:  650},
+//   {type:      "duck", value:   10},
+//   {type: "furniture", value: 1200},
+//   {type:   "machine", value:   77}
+// ]
+
+// inventory.reduce(function(valorAnterior, valorActual){
+//   return valorAnterior + valorActual;
+// });
+// }
+
+
+// }
+
+
+
+ 
+  
+  // function listadoUsuario()
+  // {
+  //   // var nombreUsuarios = [];
+  //   // for (let i = 0; i < people.length; i++) {
+  //   //   nombreUsuarios.push(people[i].name)
+  //   // }
+  //   // var usuariosFinales = nombreUsuarios.join(' , ');
+  //  return people.map(usuario => usuario.name).join(', ')
+  // }
+
+
+//   function cuantosSenior()
+//   {
+//     // var cualesSenior = []
+//   //   for (let i = 0; i < people.length; i++) {
+//   //     if(people[i].role === "senior"){
+//   //       cualesSenior.push(people[i].role)
+//   //     }
+//   // }
+//   return people.filter(usuario => usuario.role.trim() === 'senior').length;
+// }
+
+const teamName = "tooling"
+const people = [{name: "Jennie", role: "senior"},
+                {name: "Ronald", role: "senior"},
+                {name: "Martin", role: "junior"},
+                {name: "Martin", role: "senior"},
+                {name: "Anneli", role: "senior"}]
+
+const listadoUsuario = () => people.map(usuario => usuario.name).join(', ')
+const cuantosSenior = () => people.filter(usuario => usuario.role.trim() === 'senior').length
+const resultado = () => `There are ${people.length} people on the tooling team.
+Their names are ${listadoUsuario()}. 
+${cuantosSenior()} of them have a senior role.`
+console.log(resultado());
+  
 
 
 
