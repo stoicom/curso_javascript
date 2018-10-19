@@ -410,22 +410,66 @@ function nombreGrupo(grupos){
 //   return people.filter(usuario => usuario.role.trim() === 'senior').length;
 // }
 
-const teamName = "tooling"
-const people = [{name: "Jennie", role: "senior"},
-                {name: "Ronald", role: "senior"},
-                {name: "Martin", role: "junior"},
-                {name: "Martin", role: "senior"},
-                {name: "Anneli", role: "senior"}]
+// const teamName = "tooling"
+// const people = [{name: "Jennie", role: "senior"},
+//                 {name: "Ronald", role: "senior"},
+//                 {name: "Martin", role: "junior"},
+//                 {name: "Martin", role: "senior"},
+//                 {name: "Anneli", role: "senior"}]
 
-const listadoUsuario = () => people.map(usuario => usuario.name).join(', ')
-const cuantosSenior = () => people.filter(usuario => usuario.role.trim() === 'senior').length
-const resultado = () => `There are ${people.length} people on the tooling team.
-Their names are ${listadoUsuario()}. 
-${cuantosSenior()} of them have a senior role.`
-console.log(resultado());
+// const listadoUsuario = () => people.map(usuario => usuario.name).join(', ')
+// const cuantosSenior = () => people.filter(usuario => usuario.role.trim() === 'senior').length
+// const resultado = () => `There are ${people.length} people on the tooling team.
+// Their names are ${listadoUsuario()}. 
+// ${cuantosSenior()} of them have a senior role.`
+//console.log(resultado());
   
 
 
+//Family
+
+let family = {
+  name: 'Sergio',
+  firstName: 'Zamarro',
+  age: 26,
+  dad: {
+    name: 'Agustin',
+    age: 50
+  },
+  mother: {
+    name: 'Yolanda',
+    age: 52 
+  }
+}
+
+const getFamily = () => family
+//console.log(getFamily());
+
+let numbers = [1, 2, 3, 1, 5, 5, 2, 7, 25, 32, 25, 69]
+//console.log(Array.from(new Set(numbers)));
+
+
+//Fecha
+
+var ES = new Intl.DateTimeFormat("es-ES")
+
+//console.log(ES.format(new Date()));
+
+
+
+
+const name = Symbol()
+let usuario = {
+  [name] : 'Michele',
+  firstName: 'Stoico',
+  age: 37
+}
+
+console.log(usuario[name]);
+// usuario[name] = name;
+
+
+// console.log(set);
 
 // function saludar(){
 //     function alertasaludo(){
